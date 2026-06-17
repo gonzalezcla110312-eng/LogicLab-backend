@@ -15,7 +15,6 @@ LogicLab API está desarrollada con **Node.js + Express** y utiliza **MySQL** co
 | Node.js | 18 o superior | Compatible con el stack actual |
 | npm | 9 o superior | Incluido con Node.js |
 | Docker | Última versión estable | Para levantar MySQL |
-| Docker Compose | v2 | Requerido para `docker-compose.yml` |
 | MySQL | 8.0 | Se ejecuta en contenedor |
 | Git | Última versión | Para clonar y subir cambios |
 
