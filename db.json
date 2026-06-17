@@ -1,0 +1,698 @@
+{
+  "users": [
+    {
+      "email": "andres@gmail.com",
+      "password": "$2a$10$6zmJ1S29MNIGoVw4RLwDM.Y6TfEO7TOOBndLgLMJvhdDChIf9LuH6",
+      "nombre": "Andres",
+      "apellido": "Sanabria",
+      "rol": "Mesero",
+      "Tipo_documentoId": 1,
+      "Roles_usuariosId": 1,
+      "id": 1
+    },
+    {
+      "email": "Velandia@gmail.com",
+      "password": "$2a$10$6vO2RdUa36vxuO2n7yS2K.4OdQUQKWyuaj7QrdmxJoaXhRTqNvuYK",
+      "nombre": "Alejandro",
+      "apellido": "Velandia",
+      "rol": "Cocinero",
+      "Tipo_documentoId": 2,
+      "Roles_usuariosId": 2,
+      "id": 2
+    },
+    {
+      "email": "Solarte@gmail.com",
+      "password": "$2a$10$NfE4KsT/JLPNRNZI0UZ4w.Hn18HjLMNQ4q1xGUxXfbIwaSCWUcz4u",
+      "nombre": "Miguel",
+      "apellido": "Solarte",
+      "rol": "Cocinero",
+      "Tipo_documentoId": 3,
+      "Roles_usuariosId": 3,
+      "id": 3
+    },
+    {
+      "email": "Claude@gmail.com",
+      "password": "$2a$10$bFtFlfrQ.mOsgg1tgchftOZSU2pJdUUgG.RGvJhWgOB1EohtPpmuu",
+      "nombre": "Claus",
+      "apellido": "Gonzales",
+      "rol": "Mesero",
+      "Tipo_documentoId": 4,
+      "Roles_usuariosId": 4,
+      "id": 4
+    },
+    {
+      "email": "Admin@gmail.com",
+      "password": "$2a$10$eHr93/okdkkb2D4KyZX2ke90K9b/.I7/3vn4HD9u3H4J9tzth1Lxi",
+      "nombre": "Juan",
+      "apellido": "Andrade",
+      "rol": "Administrador",
+      "Tipo_documentoId": 5,
+      "Roles_usuariosId": 5,
+      "id": 5
+    }
+  ],
+  "Tipo_Documento": [
+    {
+      "id": "1",
+      "Descripcion_documento": "Cedula ciudadana",
+      "Estado_documento": "Activo"
+    },
+    {
+      "id": "2",
+      "Descripcion_documento": "Cedula de Extranjeria",
+      "Estado_documento": "Activo"
+    },
+    {
+      "id": "3",
+      "Descripcion_documento": "Cedula ciudadana",
+      "Estado_documento": "Activo"
+    },
+    {
+      "id": "4",
+      "Descripcion_documento": "Cedula ciudadana",
+      "Estado_documento": "Activo"
+    },
+    {
+      "id": "5",
+      "Descripcion_documento": "Cedula ciudadana",
+      "Estado_documento": "Activo"
+    }
+  ],
+  "Roles": [
+    {
+      "id": "1",
+      "Tipo_Rol": "Mesero"
+    },
+    {
+      "id": "2",
+      "Tipo_Rol": "Cocinero"
+    },
+    {
+      "id": "3",
+      "Tipo_Rol": "Mesero"
+    },
+    {
+      "id": "4",
+      "Tipo_Rol": "Mesero"
+    },
+    {
+      "id": "5",
+      "Tipo_Rol": "Administrador"
+    }
+  ],
+  "Platos": [
+    {
+      "id": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "Precio": 35000,
+      "CategoriaId": "1",
+      "Descripcion": "Proteína: Pollo asado. Incluye principio (frijol, lenteja, pasta, etc) y sopa o arroz con leche."
+    },
+    {
+      "id": "2",
+      "NombrePlato": "Corriente Carne Asada",
+      "Precio": 15000,
+      "CategoriaId": "1",
+      "Descripcion": "Proteína: Carne asada. Incluye principio y sopa o arroz con leche del día."
+    },
+    {
+      "id": "3",
+      "NombrePlato": "Corriente Pollo Sudado",
+      "Precio": 15000,
+      "CategoriaId": "1",
+      "Descripcion": "Proteína: Pollo sudado. Incluye principio a elección y acompañamiento líquido."
+    },
+    {
+      "id": "4",
+      "NombrePlato": "Corriente Carne Sudada",
+      "Precio": 15000,
+      "CategoriaId": "1",
+      "Descripcion": "Proteína: Carne sudada. Incluye principio y sopa (ajiaco, mondongo, etc)."
+    },
+    {
+      "id": "5",
+      "NombrePlato": "Corriente Carne Molida",
+      "Precio": 15000,
+      "CategoriaId": "1",
+      "Descripcion": "Proteína: Carne molida. Servido con arroz blanco y principio del día."
+    },
+    {
+      "id": "6",
+      "NombrePlato": "Hamburguesa Sencilla Carne",
+      "Precio": 12000,
+      "CategoriaId": "2",
+      "Descripcion": "Hamburguesa de carne de res básica."
+    },
+    {
+      "id": "7",
+      "NombrePlato": "Hamburguesa Combo Pollo",
+      "Precio": 20000,
+      "CategoriaId": "2",
+      "Descripcion": "Hamburguesa de pollo acompañada de gaseosa y papas fritas."
+    },
+    {
+      "id": "8",
+      "NombrePlato": "Hamburguesa Doble Carne",
+      "Precio": 27000,
+      "CategoriaId": "2",
+      "Descripcion": "Doble porción de carne de res con queso y vegetales."
+    },
+    {
+      "id": "9",
+      "NombrePlato": "Hamburguesa Combo Carne",
+      "Precio": 20000,
+      "CategoriaId": "2",
+      "Descripcion": "Combo de hamburguesa de res con papas y bebida."
+    },
+    {
+      "id": "10",
+      "NombrePlato": "Hamburguesa Sencilla Pollo Apanado",
+      "Precio": 12000,
+      "CategoriaId": "2",
+      "Descripcion": "Pollo apanado crujiente en pan artesanal."
+    },
+    {
+      "id": "11",
+      "NombrePlato": "Churrasco",
+      "Precio": 25000,
+      "CategoriaId": "3",
+      "Descripcion": "Corte de carne especial. Incluye arroz, ensalada, papas francesas y saladas."
+    },
+    {
+      "id": "12",
+      "NombrePlato": "Mini Paisa",
+      "Precio": 25000,
+      "CategoriaId": "3",
+      "Descripcion": "Versión personal de la bandeja paisa. Incluye sopa o arroz con leche."
+    },
+    {
+      "id": "13",
+      "NombrePlato": "Mojarra Frita",
+      "Precio": 25000,
+      "CategoriaId": "3",
+      "Descripcion": "Pescado entero frito con guarniciones de la casa."
+    },
+    {
+      "id": "14",
+      "NombrePlato": "Costillas BBQ",
+      "Precio": 25000,
+      "CategoriaId": "3",
+      "Descripcion": "Costillitas bañadas en salsa BBQ con papas y ensalada."
+    },
+    {
+      "id": "15",
+      "NombrePlato": "Pechuga Gratinada",
+      "Precio": 25000,
+      "CategoriaId": "3",
+      "Descripcion": "Filete de pechuga cubierto de queso fundido."
+    },
+    {
+      "id": "16",
+      "NombrePlato": "Jugo de Mora (Leche)",
+      "Precio": 8000,
+      "CategoriaId": "4",
+      "Descripcion": "Jugo natural preparado en leche."
+    },
+    {
+      "id": "17",
+      "NombrePlato": "Gaseosa 1.5L",
+      "Precio": 7000,
+      "CategoriaId": "4",
+      "Descripcion": "Botella familiar (Coca-Cola, Sprite, Colombiana)."
+    },
+    {
+      "id": "18",
+      "NombrePlato": "Limonada",
+      "Precio": 4000,
+      "CategoriaId": "4",
+      "Descripcion": "Vaso de limonada natural fresca."
+    },
+    {
+      "id": "19",
+      "NombrePlato": "Jugo de Maracuyá (Agua)",
+      "Precio": 5000,
+      "CategoriaId": "4",
+      "Descripcion": "Jugo natural refrescante preparado en agua."
+    },
+    {
+      "id": "20",
+      "NombrePlato": "Agua Cristal",
+      "Precio": 4000,
+      "CategoriaId": "4",
+      "Descripcion": "Botella de agua mineral."
+    }
+  ],
+  "Categoria": [
+    {
+      "id": "1",
+      "NombreCategoria": "Carta Corriente"
+    },
+    {
+      "id": "2",
+      "NombreCategoria": "Comida Rápida"
+    },
+    {
+      "id": "3",
+      "NombreCategoria": "Carta Especial"
+    },
+    {
+      "id": "4",
+      "NombreCategoria": "Bebidas"
+    }
+  ],
+  "Mesas": [
+    {
+      "id": 1,
+      "numero": 1,
+      "estado": "ocupada"
+    },
+    {
+      "id": 2,
+      "numero": 2,
+      "estado": "ocupada"
+    },
+    {
+      "id": 3,
+      "numero": 3,
+      "estado": "disponible"
+    },
+    {
+      "id": 4,
+      "numero": 4,
+      "estado": "disponible"
+    },
+    {
+      "id": 5,
+      "numero": 5,
+      "estado": "disponible"
+    },
+    {
+      "id": 6,
+      "numero": 6,
+      "estado": "disponible"
+    },
+    {
+      "id": 7,
+      "numero": 7,
+      "estado": "disponible"
+    },
+    {
+      "id": 8,
+      "numero": 8,
+      "estado": "disponible"
+    },
+    {
+      "id": 9,
+      "numero": 9,
+      "estado": "disponible"
+    },
+    {
+      "id": 10,
+      "numero": 10,
+      "estado": "disponible"
+    },
+    {
+      "id": 11,
+      "numero": 11,
+      "estado": "disponible"
+    },
+    {
+      "id": 12,
+      "numero": 12,
+      "estado": "disponible"
+    }
+  ],
+  "Pedido": [
+    {
+      "mesa": "10",
+      "fecha_pedido": "28/4/2026, 11:50:11 p. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 30000,
+      "id": 1
+    },
+    {
+      "mesa": "3",
+      "fecha_pedido": "28/4/2026, 11:59:58 p. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 75000,
+      "id": 2
+    },
+    {
+      "mesa": "2",
+      "fecha_pedido": "29/4/2026, 12:08:40 a. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 75000,
+      "id": 3
+    },
+    {
+      "mesa": "1",
+      "fecha_pedido": "29/4/2026, 8:52:26 a. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 15000,
+      "id": 4
+    },
+    {
+      "mesa": "1",
+      "fecha_pedido": "3/5/2026, 8:58:23 p. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 35000,
+      "id": 5
+    },
+    {
+      "mesa": "1",
+      "fecha_pedido": "3/5/2026, 8:58:23 p. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 25000,
+      "id": 6
+    },
+    {
+      "mesa": "2",
+      "fecha_pedido": "3/5/2026, 9:13:35 p. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 88000,
+      "id": 7
+    },
+    {
+      "mesa": "1",
+      "fecha_pedido": "3/5/2026, 9:44:57 p. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 58000,
+      "id": 8
+    },
+    {
+      "mesa": "1",
+      "fecha_pedido": "3/5/2026, 10:17:29 p. m.",
+      "estadoPedido": "entregado",
+      "totalPagar": 128000,
+      "id": 9
+    },
+    {
+      "mesa": "1",
+      "fecha_pedido": "3/5/2026, 10:34:49 p. m.",
+      "estadoPedido": "listo",
+      "totalPagar": 105000,
+      "id": 10
+    }
+  ],
+  "Detalle_pedidos": [
+    {
+      "PedidoId": 1,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 2,
+      "notasEspeciales": "sin chicken little",
+      "bebida": "Jugo de Mora (Leche)",
+      "precioFinal": 30000,
+      "id": 1
+    },
+    {
+      "PedidoId": 2,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 5,
+      "notasEspeciales": "eaffewfssefes",
+      "bebida": "Gaseosa 1.5L",
+      "precioFinal": 75000,
+      "id": 2
+    },
+    {
+      "PedidoId": 3,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 5,
+      "notasEspeciales": "wsdadawdaewd",
+      "bebida": "Jugo de Mora (Leche)",
+      "precioFinal": 75000,
+      "id": 3
+    },
+    {
+      "PedidoId": 4,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "bebida": "",
+      "precioFinal": 15000,
+      "id": 4
+    },
+    {
+      "PedidoId": 5,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "bebida": "",
+      "precioFinal": 35000,
+      "id": 5
+    },
+    {
+      "PedidoId": 6,
+      "PlatoId": "12",
+      "NombrePlato": "Mini Paisa",
+      "cantidadPedido": 1,
+      "notasEspeciales": "sin sopa  y sin el arroz con leche",
+      "bebida": "",
+      "precioFinal": 25000,
+      "id": 6
+    },
+    {
+      "PedidoId": 7,
+      "PlatoId": "2",
+      "NombrePlato": "Corriente Carne Asada",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 15000,
+      "id": 7
+    },
+    {
+      "PedidoId": 7,
+      "PlatoId": "12",
+      "NombrePlato": "Mini Paisa",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "3",
+      "precioFinal": 25000,
+      "id": 8
+    },
+    {
+      "PedidoId": 7,
+      "PlatoId": "19",
+      "NombrePlato": "Jugo de Maracuyá (Agua)",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "4",
+      "precioFinal": 5000,
+      "id": 9
+    },
+    {
+      "PedidoId": 7,
+      "PlatoId": "16",
+      "NombrePlato": "Jugo de Mora (Leche)",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "4",
+      "precioFinal": 8000,
+      "id": 10
+    },
+    {
+      "PedidoId": 7,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 35000,
+      "id": 11
+    },
+    {
+      "PedidoId": 8,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 35000,
+      "id": 12
+    },
+    {
+      "PedidoId": 8,
+      "PlatoId": "2",
+      "NombrePlato": "Corriente Carne Asada",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 15000,
+      "id": 13
+    },
+    {
+      "PedidoId": 8,
+      "PlatoId": "16",
+      "NombrePlato": "Jugo de Mora (Leche)",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "4",
+      "precioFinal": 8000,
+      "id": 14
+    },
+    {
+      "PedidoId": 9,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 35000,
+      "id": 15
+    },
+    {
+      "PedidoId": 9,
+      "PlatoId": "2",
+      "NombrePlato": "Corriente Carne Asada",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 15000,
+      "id": 16
+    },
+    {
+      "PedidoId": 9,
+      "PlatoId": "4",
+      "NombrePlato": "Corriente Carne Sudada",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 15000,
+      "id": 17
+    },
+    {
+      "PedidoId": 9,
+      "PlatoId": "14",
+      "NombrePlato": "Costillas BBQ",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "3",
+      "precioFinal": 25000,
+      "id": 18
+    },
+    {
+      "PedidoId": 9,
+      "PlatoId": "12",
+      "NombrePlato": "Mini Paisa",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "3",
+      "precioFinal": 25000,
+      "id": 19
+    },
+    {
+      "PedidoId": 9,
+      "PlatoId": "19",
+      "NombrePlato": "Jugo de Maracuyá (Agua)",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "4",
+      "precioFinal": 5000,
+      "id": 20
+    },
+    {
+      "PedidoId": 9,
+      "PlatoId": "16",
+      "NombrePlato": "Jugo de Mora (Leche)",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "4",
+      "precioFinal": 8000,
+      "id": 21
+    },
+    {
+      "PedidoId": 10,
+      "PlatoId": "1",
+      "NombrePlato": "Corriente Pollo Asado",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 35000,
+      "id": 22
+    },
+    {
+      "PedidoId": 10,
+      "PlatoId": "2",
+      "NombrePlato": "Corriente Carne Asada",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 15000,
+      "id": 23
+    },
+    {
+      "PedidoId": 10,
+      "PlatoId": "4",
+      "NombrePlato": "Corriente Carne Sudada",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "1",
+      "precioFinal": 15000,
+      "id": 24
+    },
+    {
+      "PedidoId": 10,
+      "PlatoId": "13",
+      "NombrePlato": "Mojarra Frita",
+      "cantidadPedido": 1,
+      "notasEspeciales": "",
+      "CategoriaId": "3",
+      "precioFinal": 25000,
+      "id": 25
+    },
+    {
+      "PedidoId": 10,
+      "PlatoId": "18",
+      "NombrePlato": "Limonada",
+      "cantidadPedido": 2,
+      "notasEspeciales": "",
+      "CategoriaId": "4",
+      "precioFinal": 8000,
+      "id": 26
+    },
+    {
+      "PedidoId": 10,
+      "PlatoId": "17",
+      "NombrePlato": "Gaseosa 1.5L",
+      "cantidadPedido": 1,
+      "notasEspeciales": "nada",
+      "CategoriaId": "4",
+      "precioFinal": 7000,
+      "id": 27
+    }
+  ],
+  "pqrsf": [
+    {
+      "id": 1,
+      "cliente": "Juan Perez",
+      "mensaje": "La comida llegó fría",
+      "tipo": "Queja"
+    },
+    {
+      "id": 2,
+      "cliente": "Maria Lopez",
+      "mensaje": "Excelente servicio",
+      "tipo": "Felicitación"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
