@@ -10,6 +10,7 @@ router.use(autenticacion);
 router.get('/', mesasController.listarMesas);
 router.get('/pedidos', mesasController.listarPedidos);
 router.get('/pedidos/activos/cocina', verificarRoles('administrador', 'cocinero'), mesasController.listarPedidosActivosCocina);
+router.get('/pedidos/listos-recoger', verificarRoles('administrador', 'mesero', 'cocinero'), mesasController.listarPedidosListosParaRecoger);
 router.get(
   '/:id/pedido-activo',
   verificarRoles('administrador', 'mesero'),

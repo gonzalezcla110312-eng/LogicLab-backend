@@ -192,6 +192,52 @@ export const listarPedidosActivosCocina = async () => {
   }));
 };
 
+export const listarPedidosListosParaRecoger = async () => {
+  const [pedidoRows] = await pool.query(
+    `SELECT p.id, p.mesa_id, m.numero AS mesa_numero, p.usuario_id, p.estado_id, ep.nombre AS estado, p.total, p.created_at,
+            TIMESTAMPDIFF(MINUTE, p.created_at, NOW()) AS minutos_transcurridos,
+            u.nombre AS mesero_nombre, u.apellido AS mesero_apellido
+     FROM pedidos p
+     INNER JOIN estados_pedidos ep ON ep.id = p.estado_id
+     INNER JOIN mesas m ON m.id = p.mesa_id
+     INNER JOIN usuarios u ON u.id = p.usuario_id
+     WHERE ep.nombre = 'PARA_ENTREGA'
+     ORDER BY p.created_at ASC, p.id ASC`
+  );
+
+  if (pedidoRows.length === 0) {
+    return [];
+  }
+
+  const pedidoIds = pedidoRows.map((pedido) => pedido.id);
+  const placeholders = pedidoIds.map(() => '?').join(',');
+
+  const [detalleRows] = await pool.query(
+    `SELECT d.id, d.pedido_id, d.platillo_id, d.cantidad, d.precio_unitario, d.subtotal, d.notas,
+            p.nombre AS platillo_nombre
+     FROM pedido_detalles d
+     LEFT JOIN platillos p ON p.id = d.platillo_id
+     WHERE d.pedido_id IN (${placeholders})
+     ORDER BY d.pedido_id ASC, d.id ASC`,
+    pedidoIds
+  );
+
+  const detallesPorPedido = new Map();
+  for (const detalle of detalleRows) {
+    if (!detallesPorPedido.has(detalle.pedido_id)) {
+      detallesPorPedido.set(detalle.pedido_id, []);
+    }
+
+    detallesPorPedido.get(detalle.pedido_id).push(detalle);
+  }
+
+  return pedidoRows.map((pedido) => ({
+    ...pedido,
+    minutos_transcurridos: Number(pedido.minutos_transcurridos || 0),
+    detalles: detallesPorPedido.get(pedido.id) || []
+  }));
+};
+
 const obtenerDetallePedido = async (connection, pedidoId) => {
   const [pedidoRows] = await connection.query(
     `SELECT p.id, p.mesa_id, p.usuario_id, p.estado_id, ep.nombre AS estado, p.total, p.created_at 
