@@ -1,14 +1,16 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
 import { dbReady } from './config/db.js';
+import swaggerSpec from './config/swagger.js';
 
 import rutasUsuarios from './routes/usuarios.routes.js';
 import rutasMesas from './routes/mesas.routes.js';
 import rutasPlatillos from './routes/platillos.routes.js';
 import rutasMenuDia from './routes/menu-dia.routes.js';
 import rutasDashboardAdmin from './routes/dashboard-admin.routes.js';
-import rutasPQRS from './routes/pqrs.routes.js';
+import rutasPqrs from './routes/pqrs.routes.js';
 
 dotenv.config();
 
@@ -21,6 +23,10 @@ app.use(cors({ origin: allowedOrigin }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.get('/api-docs.json', (_req, res) => {
+  res.json(swaggerSpec);
+});
 
 app.get('/', (_req, res) => {
   res.json({
@@ -35,7 +41,7 @@ app.use('/api/mesas', rutasMesas);
 app.use('/api/platillos', rutasPlatillos);
 app.use('/api/menu-dia', rutasMenuDia);
 app.use('/api/admin/dashboard', rutasDashboardAdmin);
-app.use('/api/pqrs', rutasPQRS);
+app.use('/api/pqrs', rutasPqrs);
 
 
 app.use((req, res) => {
