@@ -101,6 +101,15 @@ export const listarPedidosActivosCocina = async (_req, res) => {
   }
 };
 
+export const listarPedidosListosParaRecoger = async (_req, res) => {
+  try {
+    const pedidos = await pedidosService.listarPedidosListosParaRecoger();
+    res.status(200).json({ exito: true, datos: pedidos });
+  } catch (error) {
+    res.status(500).json({ exito: false, error: error.message });
+  }
+};
+
 export const obtenerPedidoActivoMesa = async (req, res) => {
   try {
     const mesaId = Number(req.params.id);

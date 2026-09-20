@@ -39,6 +39,14 @@ export const initializeSchemaIfNeeded = async (pool) => {
     await ensureColumn(connection, 'tipo_documento', 'descripcion_documento', 'VARCHAR(80) NULL');
     await ensureColumn(connection, 'tipo_documento', 'estado_documento', 'VARCHAR(20) NULL');
 
+    // Migracion tabla PQRSF
+    await ensureColumn(connection, 'TipoPQRSF', 'activo', 'TINYINT(1) NOT NULL DEFAULT 1');
+    await ensureColumn(connection, 'TipoPQRSF', 'created_at', 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+    await ensureColumn(connection, 'RegistroPQRSF', 'apellido_cliente', "VARCHAR(120) NOT NULL DEFAULT ''");
+    await ensureColumn(connection, 'RegistroPQRSF', 'asunto', "VARCHAR(255) NOT NULL DEFAULT 'Sin asunto'");
+    await ensureColumn(connection, 'RegistroPQRSF', 'respuesta', 'TEXT');
+    await ensureColumn(connection, 'RegistroPQRSF', 'atendido_por', 'INT NULL');
+
     console.log('✓ DDL aplicado correctamente');
   } finally {
     connection.release();
