@@ -15,7 +15,6 @@ LogicLab API está desarrollada con **Node.js + Express** y utiliza **MySQL** co
 | Node.js | 18 o superior | Compatible con el stack actual |
 | npm | 9 o superior | Incluido con Node.js |
 | Docker | Última versión estable | Para levantar MySQL |
-| Docker Compose | v2 | Requerido para `docker-compose.yml` |
 | MySQL | 8.0 | Se ejecuta en contenedor |
 | Git | Última versión | Para clonar y subir cambios |
 
@@ -34,6 +33,7 @@ LogicLab API está desarrollada con **Node.js + Express** y utiliza **MySQL** co
 | cors | Habilitar CORS | `^2.8.5` |
 | express-validator | Validación de entradas | `^7.0.0` |
 | multer | Subida de imágenes | `^2.0.2` |
+| swagger-ui-express | Documentación interactiva OpenAPI | `^5.0.1` |
 | nodemon | Recarga automática en desarrollo | `^3.0.1` |
 | MySQL | Base de datos relacional | `8.0` |
 
@@ -95,6 +95,22 @@ Puedes probar el endpoint raíz:
 ```bash
 curl http://localhost:3001/
 ```
+
+### Documentación Swagger
+
+Con la API en ejecución, abre la documentación interactiva en:
+
+```txt
+http://localhost:3001/api-docs
+```
+
+La especificación OpenAPI también está disponible como JSON en:
+
+```txt
+http://localhost:3001/api-docs.json
+```
+
+Para probar endpoints protegidos, usa el botón **Authorize** e introduce el token JWT obtenido en `/api/usuarios/login`.
 
 ---
 
