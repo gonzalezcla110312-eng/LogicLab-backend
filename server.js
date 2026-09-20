@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
 import { dbReady } from './config/db.js';
+import swaggerSpec from './config/swagger.js';
 
 import rutasUsuarios from './routes/usuarios.routes.js';
 import rutasMesas from './routes/mesas.routes.js';
@@ -21,6 +23,10 @@ app.use(cors({ origin: allowedOrigin }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.get('/api-docs.json', (_req, res) => {
+  res.json(swaggerSpec);
+});
 
 app.get('/', (_req, res) => {
   res.json({
