@@ -50,5 +50,11 @@ router.put(
 
 router.patch('/:id/activar', autenticacion, verificarRoles('administrador'), usuariosController.activar);
 router.patch('/:id/inactivar', autenticacion, verificarRoles('administrador'), usuariosController.inactivar);
-
+router.delete(
+  '/:id',
+  autenticacion,
+  verificarRoles('administrador'),
+  usuariosController.eliminar
+);
 export default router;
+

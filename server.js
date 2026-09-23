@@ -11,6 +11,7 @@ import rutasPlatillos from './routes/platillos.routes.js';
 import rutasMenuDia from './routes/menu-dia.routes.js';
 import rutasDashboardAdmin from './routes/dashboard-admin.routes.js';
 import rutasPqrs from './routes/pqrs.routes.js';
+import rutasReservaciones from './routes/reservaciones.routes.js';
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.use('/api/platillos', rutasPlatillos);
 app.use('/api/menu-dia', rutasMenuDia);
 app.use('/api/admin/dashboard', rutasDashboardAdmin);
 app.use('/api/pqrs', rutasPqrs);
+app.use('/api/reservaciones', rutasReservaciones);
 
 
 app.use((req, res) => {

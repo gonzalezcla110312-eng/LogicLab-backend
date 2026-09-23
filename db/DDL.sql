@@ -40,6 +40,23 @@ CREATE TABLE IF NOT EXISTS mesas (
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS reservaciones (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        mesa_id INT NOT NULL,
+        nombre_cliente VARCHAR(120) NOT NULL,
+        email_cliente VARCHAR(120),
+        telefono_cliente VARCHAR(30),
+        fecha DATE NOT NULL,
+        hora TIME NOT NULL,
+        personas INT NOT NULL,
+        estado ENUM('PENDIENTE', 'CONFIRMADA', 'CANCELADA', 'ATENDIDA') NOT NULL DEFAULT 'PENDIENTE',
+        observaciones VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        CONSTRAINT fk_reservaciones_mesa
+          FOREIGN KEY (mesa_id) REFERENCES mesas(id)
+);
+
 CREATE TABLE IF NOT EXISTS platillos (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	nombre VARCHAR(120) NOT NULL,

@@ -141,7 +141,48 @@ export const inactivar = async (req, res) => {
     res.status(500).json({ exito: false, error: error.message });
   }
 };
+export const eliminar = async (req, res) => {
+  try {
+    const id = Number(req.params.id);
 
+    if (!id) {
+      return res.status(400).json({
+        exito: false,
+        error: 'ID invalido'
+      });
+    }
+
+    const existe = await usuariosService.obtenerPorId(id);
+
+    if (!existe) {
+      return res.status(404).json({
+        exito: false,
+        error: 'Usuario no encontrado'
+      });
+    }
+
+    const eliminado = await usuariosService.eliminar(id);
+
+    if (!eliminado) {
+      return res.status(404).json({
+        exito: false,
+        error: 'No se pudo eliminar el usuario'
+      });
+    }
+
+    res.status(200).json({
+      exito: true,
+      mensaje: 'Usuario eliminado correctamente'
+    });
+  } catch (error) {
+    console.error('Error al eliminar usuario:', error);
+
+    res.status(500).json({
+      exito: false,
+      error: 'No se pudo eliminar el usuario. Puede tener registros relacionados en el sistema.'
+    });
+  }
+};
 export const login = async (req, res) => {
   try {
     const errores = validationResult(req);

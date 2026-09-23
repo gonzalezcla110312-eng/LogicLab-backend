@@ -157,6 +157,15 @@ export const cambiarEstado = async (id, activo) => {
   return result.affectedRows > 0;
 };
 
+export const eliminar = async (id) => {
+  const [result] = await pool.query(
+    'DELETE FROM usuarios WHERE id = ?',
+    [id]
+  );
+
+  return result.affectedRows > 0;
+};
+
 export const verificarPassword = async (passwordIngresada, passwordGuardada) => {
   return bcrypt.compare(passwordIngresada, passwordGuardada);
 };
