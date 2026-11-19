@@ -1,3 +1,4 @@
+
 import express from 'express';
 import { body, param } from 'express-validator';
 import * as platillosController from '../controllers/platillos.controller.js';
@@ -15,10 +16,10 @@ router.post(
   uploadPlatilloImage.single('imagen'),
   [
     body('nombre').notEmpty().withMessage('El nombre es requerido'),
-    body('precio').isFloat({ min: 0 }).withMessage('Precio invalido'),
-    body('categoria_id').optional().isInt({ min: 1 }).withMessage('categoria_id invalido'),
-    body('imagen_nombre').optional().isString().withMessage('imagen_nombre invalido'),
-    body('imagen_url').optional().isString().withMessage('imagen_url invalida')
+    body('precio').isFloat({ min: 0 }).withMessage('Precio inválido'),
+    body('categoria_id').optional().isInt({ min: 1 }),
+    body('imagen_nombre').optional().isString(),
+    body('imagen_url').optional().isString()
   ],
   platillosController.crearPlatillo
 );
@@ -29,15 +30,25 @@ router.put(
   verificarRoles('administrador', 'cocinero'),
   uploadPlatilloImage.single('imagen'),
   [
-    param('id').isInt({ min: 1 }).withMessage('ID invalido'),
-    body('nombre').notEmpty().withMessage('El nombre es requerido'),
-    body('precio').isFloat({ min: 0 }).withMessage('Precio invalido'),
-    body('categoria_id').optional().isInt({ min: 1 }).withMessage('categoria_id invalido'),
-    body('activo').isInt({ min: 0, max: 1 }).withMessage('activo debe ser 0 o 1'),
-    body('imagen_nombre').optional().isString().withMessage('imagen_nombre invalido'),
-    body('imagen_url').optional().isString().withMessage('imagen_url invalida')
+    param('id').isInt({ min: 1 }).withMessage('ID inválido'),
+    body('nombre').optional().notEmpty(),
+    body('precio').optional().isFloat({ min: 0 }),
+    body('categoria_id').optional().isInt({ min: 1 }),
+    body('activo').optional().isInt({ min: 0, max: 1 }),
+    body('imagen_nombre').optional().isString(),
+    body('imagen_url').optional().isString()
   ],
   platillosController.actualizarPlatillo
+);
+
+router.delete(
+  '/:id',
+  autenticacion,
+  verificarRoles('administrador'),
+  [
+    param('id').isInt({ min: 1 }).withMessage('ID inválido')
+  ],
+  platillosController.eliminarPlatillo
 );
 
 export default router;
