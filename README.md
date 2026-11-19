@@ -237,23 +237,56 @@ Los pedidos son almacenados en MySQL.
 
 ## 🍽️ Platillos
 
-El backend permite gestionar los platillos disponibles en el restaurante.
+El backend de LogicLab permite administrar los productos y platillos disponibles en el restaurante mediante una API REST conectada a MySQL.
 
-Las operaciones incluyen:
+### Funcionalidades implementadas
 
-- Consulta de platillos.
-- Creación de platillos.
-- Actualización de platillos.
-- Gestión de imágenes.
-- Disponibilidad de platillos.
+- **Consultar platillos:** visualizar los productos activos registrados en el sistema.
+- **Crear platillos:** registrar nuevos productos con nombre, descripción, precio, categoría e imagen opcional.
+- **Editar platillos:** actualizar la descripción, el precio y otros datos del producto.
+- **Eliminar platillos:** retirar productos del catálogo mediante una eliminación lógica.
+- **Confirmación de eliminación:** el frontend solicita confirmación antes de eliminar un producto.
+- **Validación de nombres duplicados:** no se permite registrar dos productos activos con el mismo nombre, aunque tengan diferencias entre mayúsculas, minúsculas o espacios.
+- **Reutilización de nombres:** un producto eliminado puede registrarse nuevamente con el mismo nombre, otro precio y una nueva imagen.
+- **Gestión de imágenes:** permite cargar y mostrar imágenes de los productos.
 
-Los archivos subidos para los platillos se almacenan en la carpeta:
+### Eliminación segura de productos
 
-```text
-uploads/
-```
+Para proteger el historial de pedidos, el sistema utiliza el campo `activo` de la tabla `platillos`.
 
----
+Cuando un administrador elimina un producto, su estado cambia de `activo = 1` a `activo = 0`.
+
+Esto permite que el producto deje de aparecer en el catálogo sin borrar físicamente su registro de MySQL.
+
+**Ejemplo:**
+
+1. Se registra Carne Molida con un precio de $15.000.
+2. El administrador selecciona el botón **Eliminar** y confirma la operación.
+3. Carne Molida desaparece del catálogo de productos activos.
+4. El administrador puede registrar nuevamente Carne Molida con un precio de $20.000.
+
+### Endpoints de platillos
+
+| Método | Ruta | Funcionalidad | Permisos |
+|---|---|---|---|
+| GET | `/api/platillos` | Consultar platillos activos | Público |
+| POST | `/api/platillos` | Crear un platillo | Administrador o cocinero |
+| PUT | `/api/platillos/:id` | Actualizar un platillo | Administrador o cocinero |
+| DELETE | `/api/platillos/:id` | Eliminar lógicamente un platillo | Administrador |
+
+### Archivos relacionados
+
+**Backend:**
+- `controllers/platillos.controller.js`
+- `routes/platillos.routes.js`
+- `services/platillos.service.js`
+
+**Frontend:**
+- `src/components/Admin/Platos.jsx`
+
+**Almacenamiento de imágenes:**
+
+`uploads/platillos/`
 
 ## 📋 Menú del día
 
