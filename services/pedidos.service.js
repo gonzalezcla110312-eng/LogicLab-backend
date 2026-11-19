@@ -40,7 +40,7 @@ export const crearPedidoConDetalle = async ({ mesaId, usuarioId, items }) => {
       `SELECT p.id, ep.nombre AS estado
        FROM pedidos p
        INNER JOIN estados_pedidos ep ON ep.id = p.estado_id
-       WHERE p.mesa_id = ? AND ep.nombre <> 'PAGADO'
+       WHERE p.mesa_id = ? AND ep.nombre NOT IN ('PAGADO', 'CERRADO', 'CANCELADO')
        ORDER BY p.id DESC
        LIMIT 1`,
       [mesaId]
@@ -273,7 +273,7 @@ export const obtenerPedidoActivoPorMesa = async (mesaId) => {
     `SELECT p.id
      FROM pedidos p
      INNER JOIN estados_pedidos ep ON ep.id = p.estado_id
-     WHERE p.mesa_id = ? AND ep.nombre <> 'PAGADO'
+     WHERE p.mesa_id = ? AND ep.nombre NOT IN ('PAGADO', 'CERRADO', 'CANCELADO')
      ORDER BY p.id DESC
      LIMIT 1`,
     [mesaId]
