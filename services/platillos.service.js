@@ -1,16 +1,19 @@
 
 import pool from '../config/db.js';
 
-// Normaliza los nombres para evitar registros duplicados.
+// Normaliza los nombres de los productos.
 const normalizarNombre = (nombre) => {
   return String(nombre || '')
     .trim()
     .replace(/\s+/g, ' ');
 };
 
-// Comprueba nombres sin distinguir mayúsculas,
-// minúsculas ni espacios adicionales.
-const verificarNombreDuplicado = async (nombre, excluirId = null) => {
+// Verifica que no exista otro producto ACTIVO
+// con el mismo nombre.
+const verificarNombreDuplicado = async (
+  nombre,
+  excluirId = null
+) => {
   const nombreLimpio = normalizarNombre(nombre);
 
   if (!nombreLimpio) {
@@ -20,10 +23,11 @@ const verificarNombreDuplicado = async (nombre, excluirId = null) => {
   const [rows] = await pool.query(
     `SELECT id
      FROM platillos
-     WHERE LOWER(
-       REGEXP_REPLACE(TRIM(nombre), '[[:space:]]+', ' ')
-     ) = LOWER(?)
-     AND (? IS NULL OR id <> ?)
+     WHERE activo = 1
+       AND LOWER(
+         REGEXP_REPLACE(TRIM(nombre), '[[:space:]]+', ' ')
+       ) = LOWER(?)
+       AND (? IS NULL OR id <> ?)
      LIMIT 1`,
     [nombreLimpio, excluirId, excluirId]
   );
@@ -37,7 +41,7 @@ const verificarNombreDuplicado = async (nombre, excluirId = null) => {
   return nombreLimpio;
 };
 
-// LISTAR TODOS LOS PLATOS
+// LISTAR SOLAMENTE LOS PLATOS ACTIVOS
 export const listarPlatillos = async () => {
   const [rows] = await pool.query(
     `SELECT p.id, p.nombre, p.descripcion, p.precio,
@@ -45,13 +49,14 @@ export const listarPlatillos = async () => {
             p.imagen_url, p.activo, p.created_at, p.updated_at
      FROM platillos p
      LEFT JOIN categorias c ON c.id = p.categoria_id
+     WHERE p.activo = 1
      ORDER BY p.id DESC`
   );
 
   return rows;
 };
 
-// CREAR PLATO SIN PERMITIR NOMBRES DUPLICADOS
+// CREAR UN PLATO
 export const crearPlatillo = async ({
   nombre,
   descripcion,
@@ -86,7 +91,7 @@ export const crearPlatillo = async ({
   return rows[0];
 };
 
-// ACTUALIZAR PLATO SIN DUPLICAR NOMBRES
+// ACTUALIZAR UN PLATO
 export const actualizarPlatillo = async (
   id,
   {
@@ -98,7 +103,10 @@ export const actualizarPlatillo = async (
     activo
   }
 ) => {
-  const nombreValidado = await verificarNombreDuplicado(nombre, id);
+  const nombreValidado = await verificarNombreDuplicado(
+    nombre,
+    id
+  );
 
   const [result] = await pool.query(
     `UPDATE platillos
@@ -108,7 +116,8 @@ export const actualizarPlatillo = async (
          categoria_id = ?,
          imagen_url = ?,
          activo = ?
-     WHERE id = ?`,
+     WHERE id = ?
+       AND activo = 1`,
     [
       nombreValidado,
       descripcion,
@@ -136,15 +145,29 @@ export const actualizarPlatillo = async (
   return rows[0];
 };
 
-// BUSCAR PLATO POR ID
+// BUSCAR UN PLATO ACTIVO POR ID
 export const obtenerPlatilloPorId = async (id) => {
   const [rows] = await pool.query(
     `SELECT id, nombre, descripcion, precio,
             categoria_id, imagen_url, activo
      FROM platillos
-     WHERE id = ?`,
+     WHERE id = ?
+       AND activo = 1`,
     [id]
   );
 
   return rows[0] || null;
+};
+
+// ELIMINAR UN PLATO SIN BORRARLO DE MYSQL
+export const eliminarPlatillo = async (id) => {
+  const [result] = await pool.query(
+    `UPDATE platillos
+     SET activo = 0
+     WHERE id = ?
+       AND activo = 1`,
+    [id]
+  );
+
+  return result.affectedRows > 0;
 };
